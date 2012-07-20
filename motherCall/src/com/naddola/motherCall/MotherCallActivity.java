@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 public class MotherCallActivity extends Activity {
+	
 	ImageButton buttonQuick;
 	ImageButton buttonOriginal;
     public void onCreate(Bundle savedInstanceState) {

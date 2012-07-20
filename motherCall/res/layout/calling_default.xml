@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/call_background"
+    android:orientation="vertical" >
+    
+    <Button
+        android:id="@+id/CallingButtonTemp" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/StopCall"
+        />
+    
+    
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:text="@string/RecieveCall"
+        android:textSize="20sp"
+        android:textColor="#ffffffff"
+        android:gravity="center"
+        android:layout_weight="1"/>
+  
+    <ImageView 
+        android:id="@+id/CallingPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/defaultcall"
+        android:layout_gravity="center"/>
+    <TextView
+        android:id="@+id/callingWho" 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="엄마"
+        />
+    
+    <TextView
+        android:id="@+id/callingWhosPhone" 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:text="010-8885-9979"
+        />
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="2">
+        
+        <ImageView 
+            android:id="@+id/callingGreen"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:src="@drawable/call_green"/>
+        
+        <ImageView 
+            android:id="@+id/callingRed"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/call_red"/>
+    </LinearLayout>
+    
+     
+
+</LinearLayout>

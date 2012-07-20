@@ -1,10 +1,8 @@
 package com.naddola.motherCall;
 
-import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.Service;
 import android.app.PendingIntent.CanceledException;
-
+import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.Vibrator;
@@ -13,10 +11,8 @@ import android.widget.Toast;
 
 public class QuickCallService extends Service {
 
-	NotificationManager mNM;
-
 	boolean isRunning = true;
-
+	
 	Vibrator vibrator;
 
 	@Override

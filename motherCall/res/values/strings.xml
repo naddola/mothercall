@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MotherCall</string>
+    <string name="title">Mother Call</string>
+    
+    <string name="confirm">확 인</string>
+    <string name="selecttime">시간 설정</string>
+    <string name="selectcall">전화 설정</string>
+    <string name="selectvoice">목소리 설정</string>
+    
+    <string name="quickTitle">Quick Call</string>
+    <string name="thirtysecond">30초</string>
+    <string name="fiveminute">5분</string>
+    <string name="strmother">엄마</string>
+    <string name="strlove">자기♥</string>
+    <string name="strmrs">아줌마</string>
+    <string name="strgirl">여자친구</string>
+    <string name="strboy">남자친구</string>
+    <string name="OriginalCallTitle">전화 설정</string>
+    <string name="Name">이름</string>
+    <string name="PhoneNumber">번호</string>
+    <string name="Bell">벨소리</string>
+    <string name="DefaultBell">기본벨</string>
+    <string name="Vibrate">진동</string>
+    
+    <string name="StopCall">콜링 스탑</string>
+    <string name="RecieveCall">수신 전화</string>
+    <string name="Address">주소록</string>
+    
+</resources>

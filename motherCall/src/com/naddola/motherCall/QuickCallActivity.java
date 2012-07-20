@@ -58,7 +58,6 @@ public class QuickCallActivity extends Activity {
 	public void findView(){
 		buttonThirty = (Button) findViewById(R.id.QuickButtonThirty);
 		buttonFiveMinute = (Button) findViewById(R.id.QuickButtonFiveMinute);
-		
 		buttonConfirm = (Button) findViewById(R.id.QuickButtonConfirm);
 	}
 	
