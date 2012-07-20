@@ -31,14 +31,14 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/buttonThirty"
+                    android:id="@+id/QuickButtonThirty"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/thirtysecond"
                     android:textSize="30sp" />
 
                 <Button
-                    android:id="@+id/buttonFiveMinute"
+                    android:id="@+id/QuickButtonFiveMinute"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/fiveminute"
@@ -60,14 +60,14 @@
                 android:orientation="horizontal" >
 
                 <Button
-                    android:id="@+id/buttonMother"
+                    android:id="@+id/QuickButtonMother"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/strmother"
                     android:textSize="30dip" />
 
                 <Button
-                    android:id="@+id/buttonMyLove"
+                    android:id="@+id/QuickButtonMyLove"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/strlove"
@@ -91,7 +91,7 @@
                 android:paddingRight="10dp" >
 
                 <Button
-                    android:id="@+id/buttonMrs"
+                    android:id="@+id/QuickButtonMrs"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -99,7 +99,7 @@
                     android:textSize="20dip" />
 
                 <Button
-                    android:id="@+id/buttonGirl"
+                    android:id="@+id/QuickButtonGirl"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -107,7 +107,7 @@
                     android:textSize="15dip" />
 
                 <Button
-                    android:id="@+id/buttonBoy"
+                    android:id="@+id/QuickButtonBoy"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -126,7 +126,7 @@
         android:paddingTop="10dp" >
 
         <Button
-            android:id="@+id/buttonConfirm"
+            android:id="@+id/QuickButtonConfirm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/confirm"

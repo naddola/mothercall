@@ -24,4 +24,6 @@
     <string name="DefaultBell">기본벨</string>
     <string name="Vibrate">진동</string>
     
+    <string name="StopCall">콜링 스탑</string>
+    
 </resources>
