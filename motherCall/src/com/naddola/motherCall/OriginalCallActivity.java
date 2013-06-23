@@ -175,8 +175,11 @@ public class OriginalCallActivity extends Activity implements
 						mToast.show();
 
 						// 사진 가져오기
-						photo.setImageBitmap(bitmap = openPhoto(c.getLong(c
-								.getColumnIndexOrThrow(BaseColumns._ID))));
+						bitmap = openPhoto(c.getLong(c
+								.getColumnIndexOrThrow(BaseColumns._ID)));
+						if(bitmap == null)
+							bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.defaultcall);
+						photo.setImageBitmap(bitmap);
 					}
 				} finally {
 					if (c != null) {
@@ -184,7 +187,6 @@ public class OriginalCallActivity extends Activity implements
 					}
 				}
 			}
-
 			
 			// 전화번호 가져오기
 			uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
@@ -198,13 +200,13 @@ public class OriginalCallActivity extends Activity implements
 					ContactsProjection, null, null, null);
 			if (ContactCursor.moveToFirst()) {
 				do {
-					if (ContactCursor.getInt(0) == ContractId) {
-						
+					if (ContactCursor.getInt(0) == ContractId) {						
 						// 이름 가져오기
 						name = ContactCursor.getString(1);
 						EditName.setText(name);
 						// 번호 가져오기
 						phone = ContactCursor.getString(2);
+						phone = EditPhoneNumber(phone);
 						EditPhone.setText(phone);
 						break;
 					}
@@ -228,5 +230,40 @@ public class OriginalCallActivity extends Activity implements
 		}
 		return null;
 	}
+	
+	//전화번호 제대로 표기하기 위한 함수
+	public String EditPhoneNumber(String PhoneNumber){
+		String number = PhoneNumber;
+		String result ="";
+		char[] ArrayNumber = number.toCharArray();
+		int Size = ArrayNumber.length;
 
+		for(int i=0; i<Size; i++){
+			if(ArrayNumber[i]=='-' || ArrayNumber[i]==' '){
+				for(int j=i; j<Size-1; j++)
+					ArrayNumber[j] = ArrayNumber[j+1];
+				Size--;
+			}
+		}
+		
+		number = "";
+		for(int i=0; i<Size; i++)
+			number += ArrayNumber[i];
+		
+		if(Size == 11){
+			result = number.substring(0, 3)+ "-" + number.subSequence(3, Size-4) + "-" +number.substring(Size-4);			
+		}
+		else if(Integer.parseInt(number.charAt(1)+"") == 1){
+			result = number.substring(0, 3)+ "-" + number.subSequence(3, Size-4) + "-" +number.substring(Size-4);
+		}
+		else if(Integer.parseInt(number.charAt(1)+"") == 2){
+			result = number.substring(0, 2)+ "-" + number.subSequence(2, Size-4) + "-" +number.substring(Size-4);
+		}
+		else if(Integer.parseInt(number.charAt(1)+"") > 2){
+			result = number.substring(0, 3)+ "-" + number.subSequence(3, Size-4) + "-" +number.substring(Size-4);
+		}
+		else
+			result = number.substring(0, 3)+ "-" + number.subSequence(3, Size-4) + "-" +number.substring(Size-4);
+		return result;
+	}	
 }
