@@ -35,6 +35,7 @@ public class OriginalCallActivity extends Activity implements
 	MyListener myListener;
 	ResultDisplayer mPendingResult;
 
+	int ContractId;
 	String name;
 	String phone;
 	boolean vibrate;
@@ -54,7 +55,7 @@ public class OriginalCallActivity extends Activity implements
 	private PendingIntent ServicePending;
 	private AlarmManager AM;
 	private Toast mToast;
-	
+
 	public static Bitmap bitmap;
 
 	@Override
@@ -70,7 +71,7 @@ public class OriginalCallActivity extends Activity implements
 		addListener();
 
 		mDate.setText(mCalendar.get(Calendar.YEAR) + "년 "
-				+ mCalendar.get(Calendar.MONTH) + "월 "
+				+ (mCalendar.get(Calendar.MONTH) + 1) + "월 "
 				+ mCalendar.get(Calendar.DATE) + "일");
 
 		AM = (AlarmManager) getSystemService(ALARM_SERVICE);
@@ -161,25 +162,20 @@ public class OriginalCallActivity extends Activity implements
 				try {
 					c = getContentResolver().query(
 							uri,
-							new String[] { BaseColumns._ID,
-									Contacts.DISPLAY_NAME,
-									Contacts.PHOTO_ID }, null, null, null);
+							new String[] { BaseColumns._ID, Contacts.PHOTO_ID },
+							null, null, null);
 					if (c != null && c.moveToFirst()) {
-						int id = c.getInt(0);
+						ContractId = c.getInt(0);
 						if (mToast != null) {
 							mToast.cancel();
 						}
 						String txt = mPendingResult.mMsg + ":\n" + uri
-								+ "\nid: " + id;
+								+ "\nid: " + ContractId;
 						mToast = Toast.makeText(this, txt, Toast.LENGTH_LONG);
 						mToast.show();
-						// 이름 가져오기
-						name = c.getString(c
-								.getColumnIndex(Contacts.DISPLAY_NAME));
-						EditName.setText(name);
 
 						// 사진 가져오기
-						photo.setImageBitmap(bitmap=openPhoto(c.getLong(c
+						photo.setImageBitmap(bitmap = openPhoto(c.getLong(c
 								.getColumnIndexOrThrow(BaseColumns._ID))));
 					}
 				} finally {
@@ -188,31 +184,32 @@ public class OriginalCallActivity extends Activity implements
 					}
 				}
 			}
+
 			
-			
-			//전화번호 가져오기
+			// 전화번호 가져오기
 			uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
-			if (uri != null) {
-				Cursor c = null;
-				try {
-					c = getContentResolver()
-							.query(uri,
-									new String[] {
-											BaseColumns._ID,
-											ContactsContract.CommonDataKinds.Phone.NUMBER, },
-									null, null, null);
-					if (c != null && c.moveToFirst()) {
+			String[] ContactsProjection = {
+					ContactsContract.CommonDataKinds.Phone.CONTACT_ID,
+					ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+					ContactsContract.CommonDataKinds.Phone.NUMBER
+					};
+
+			Cursor ContactCursor = getContentResolver().query(uri,
+					ContactsProjection, null, null, null);
+			if (ContactCursor.moveToFirst()) {
+				do {
+					if (ContactCursor.getInt(0) == ContractId) {
+						
+						// 이름 가져오기
+						name = ContactCursor.getString(1);
+						EditName.setText(name);
 						// 번호 가져오기
-						phone = c
-								.getString(c
-										.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						phone = ContactCursor.getString(2);
 						EditPhone.setText(phone);
+						break;
 					}
-				} finally {
-					if (c != null) {
-						c.close();
-					}
-				}
+				} while (ContactCursor.moveToNext());
+
 			}
 		}
 	}
